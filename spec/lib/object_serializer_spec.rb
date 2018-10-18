@@ -182,6 +182,14 @@ describe FastJsonapi::ObjectSerializer do
         movie.actors.map(&:email)
       )
     end
+
+    it 'returns all actors in relationship' do
+      expect(
+        subject[:data][:relationships][:actors][:data].map { |a| a[:id] }
+      ).to eq(
+        movie.actors.map(&:email)
+      )
+    end
   end
 
   context 'nested includes' do
